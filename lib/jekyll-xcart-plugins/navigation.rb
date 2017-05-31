@@ -27,21 +27,21 @@ module JekyllXcart
 
         @menu_items = @site.pages.select { |item| item.data.fetch('lang', '') == @page.fetch('lang', @config['lang_default']) }
         @menu_items = @menu_items.sort { |a, b| a <=> b }
-        level = render_level(2, baseurl)
+        level = render_level(@starting_level, baseurl)
 
         return level[:markup]
       end
 
       def render_level(level, parent, force_active_class = false)
-        menu_id = level == 2 ? 'id="navigation-menu"' : ''
-        css_class = level == 2 ? 'ui sticky large vertical secondary navigation accordion pointing' : 'content'
+        menu_id = level == @starting_level ? 'id="navigation-menu"' : ''
+        css_class = level == @starting_level ? 'ui sticky large vertical secondary navigation accordion pointing' : 'content'
 
         items = @menu_items.map { |item| render_item(item, level, parent) }
 
         items_text = items.map { |item| item[:markup] }.join
         is_active = items.map { |item| item[:active] }.any?
 
-        active_class = level > 2 && (is_active || force_active_class) ? 'active' : ''
+        active_class = level > @starting_level && (is_active || force_active_class) ? 'active' : ''
 
         if items_text.strip.length > 0 then
           markup = <<-HTML
