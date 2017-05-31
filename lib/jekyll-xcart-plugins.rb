@@ -1,0 +1,6 @@
+require "jekyll-xcart-plugins/global"
+require "jekyll-xcart-plugins/converter"
+require "jekyll-xcart-plugins/link"
+require "jekyll-xcart-plugins/localization"
+require "jekyll-xcart-plugins/markup"
+require "jekyll-xcart-plugins/navigation"
