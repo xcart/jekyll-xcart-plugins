@@ -6,7 +6,7 @@
 # Author: Eugene Dementjev
 # Version: 0.1.0
 
-module Jekyll
+module JekyllXcart
   module LocalizationPlugin
 
     class LanguageSelectorTag < Liquid::Tag
@@ -58,4 +58,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag('language_selector', Jekyll::LocalizationPlugin::LanguageSelectorTag)
+Liquid::Template.register_tag('language_selector', JekyllXcart::LocalizationPlugin::LanguageSelectorTag)

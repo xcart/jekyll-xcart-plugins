@@ -6,7 +6,7 @@
 # Author: Eugene Dementjev
 # Version: 0.2.2
 
-module Jekyll
+module JekyllXcart
   module MarkupPlugin
 
     class NoteTag < Liquid::Block
@@ -42,9 +42,9 @@ HTML
       def initialize(tag_name, args, tokens)
         super
         @heading = args.strip
-        @tabindex = 'tab-' + Jekyll::MarkupPlugin.tab_autoincrement.to_s
-        Jekyll::MarkupPlugin.tab_autoincrement = Jekyll::MarkupPlugin.tab_autoincrement + 1
-        Jekyll::MarkupPlugin.tabs << { :title => @heading, :index => @tabindex }
+        @tabindex = 'tab-' + JekyllXcart::MarkupPlugin.tab_autoincrement.to_s
+        JekyllXcart::MarkupPlugin.tab_autoincrement = JekyllXcart::MarkupPlugin.tab_autoincrement + 1
+        JekyllXcart::MarkupPlugin.tabs << { :title => @heading, :index => @tabindex }
       end
 
       def render(context)
@@ -70,12 +70,12 @@ HTML
 
       def initialize(tag_name, args, tokens)
         super
-        Jekyll::MarkupPlugin.tabs = Array.new
+        JekyllXcart::MarkupPlugin.tabs = Array.new
       end
       def render(context)
         content = super
 
-        tabitems = Jekyll::MarkupPlugin.tabs.map { |tab|
+        tabitems = JekyllXcart::MarkupPlugin.tabs.map { |tab|
           "<a class='item' data-tab='#{tab[:index]}'>#{tab[:title]}</a>"
         }.join
 
@@ -94,6 +94,6 @@ HTML
   end
 end
 
-Liquid::Template.register_tag('note', Jekyll::MarkupPlugin::NoteTag)
-Liquid::Template.register_tag('tab', Jekyll::MarkupPlugin::TabTag)
-Liquid::Template.register_tag('tabs', Jekyll::MarkupPlugin::TabsTag)
+Liquid::Template.register_tag('note', JekyllXcart::MarkupPlugin::NoteTag)
+Liquid::Template.register_tag('tab', JekyllXcart::MarkupPlugin::TabTag)
+Liquid::Template.register_tag('tabs', JekyllXcart::MarkupPlugin::TabsTag)

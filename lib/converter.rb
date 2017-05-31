@@ -5,7 +5,7 @@
 # Author: Eugene Dementjev
 # Version: 0.1.0
 
-module Jekyll
+module JekyllXcart
 
     class CodeBlockWrapper
         def convert(content)
@@ -23,5 +23,5 @@ module Jekyll
 end
 
 Jekyll::Hooks.register([:pages, :posts], :pre_render) do |page, payload|
-    page.content = Jekyll::CodeBlockWrapper.new.convert(page.content)
+    page.content = JekyllXcart::CodeBlockWrapper.new.convert(page.content)
 end

@@ -9,7 +9,7 @@
 require 'pathname'
 require 'xmlsimple'
 
-module Jekyll
+module JekyllXcart
   module ReferencePlugin
 
     class LinkTag < Liquid::Tag
@@ -87,12 +87,12 @@ module Jekyll
         end
 
         # Keep the sitemap.xml file from being cleaned by Jekyll
-        site.static_files << Jekyll::ReferencePlugin::ReferenceIndex.new(site, site.dest, "/", site.config['index_path'])
+        site.static_files << JekyllXcart::ReferencePlugin::ReferenceIndex.new(site, site.dest, "/", site.config['index_path'])
       end
     end
 
   end
 end
 
-Liquid::Template.register_tag('link', Jekyll::ReferencePlugin::LinkTag)
-Liquid::Template.register_tag('ref', Jekyll::ReferencePlugin::RefTag)
+Liquid::Template.register_tag('link', JekyllXcart::ReferencePlugin::LinkTag)
+Liquid::Template.register_tag('ref', JekyllXcart::ReferencePlugin::RefTag)

@@ -6,7 +6,7 @@
 # Author: Eugene Dementjev
 # Version: 0.3.5
 
-module Jekyll
+module JekyllXcart
   module NavigationPlugin
     class BreadcrumbsTag < Liquid::Tag
 
@@ -94,4 +94,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag('navigation_menu', Jekyll::NavigationPlugin::MenuTag)
+Liquid::Template.register_tag('navigation_menu', JekyllXcart::NavigationPlugin::MenuTag)
