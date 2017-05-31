@@ -1,7 +1,11 @@
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 Gem::Specification.new do |s|
   s.name        = 'jekyll-xcart-plugins'
-  s.version     = '0.0.1'
-  s.date        = '2017-05-30'
+  s.version     = '0.0.2'
+  s.date        = '2017-05-31'
   s.summary     = 'Bunch of X-Cart Knowledge Base plugins'
   s.description = 'References to other local pages, navigation, breadcrumbs, ElasticSearch etc.'
   s.author      = 'Eugene Dementjev'
@@ -15,8 +19,11 @@ Gem::Specification.new do |s|
                    'lib/localization.rb',
                    'lib/markup.rb',
                    'lib/navigation.rb']
+  s.require_paths = ["lib"]
 
   s.extra_rdoc_files = ['README.md', 'LICENSE.md']
+
+  s.add_runtime_dependency "jekyll", ">= 3.0"
 
   s.add_dependency 'xml-simple'
 
