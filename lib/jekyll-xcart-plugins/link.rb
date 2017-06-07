@@ -68,14 +68,21 @@ module JekyllXcart
 
     class IndexGenerator < Jekyll::Generator
       def generate(site)
+        if not site.config.has_key?['index_path']
+          return
+        end
+        
         path = Pathname.new(site.dest) + site.config['index_path']
 
         index = site.pages.inject(Hash.new) do |memo, page|
           if page['title'] && page['identifier'] && page['path']
             link_parts = page['path'].split('/').slice(1..-1)
-            link_parts.last.gsub!('md', 'html')
-            link = link_parts.join('/')
-            memo.store(page['identifier'], { "title": page['title'], "link": link, "lang": page['lang'] })
+
+            if link_parts.length > 0
+              link_parts.last.gsub!('md', 'html')
+              link = link_parts.join('/')
+              memo.store(page['identifier'], { "title": page['title'], "link": link, "lang": page['lang'] })
+            end
           end
           memo
         end
