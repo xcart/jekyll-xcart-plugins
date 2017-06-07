@@ -68,10 +68,10 @@ module JekyllXcart
 
     class IndexGenerator < Jekyll::Generator
       def generate(site)
-        if not site.config.has_key?['index_path']
+        if not site.config.has_key?('index_path')
           return
         end
-        
+
         path = Pathname.new(site.dest) + site.config['index_path']
 
         index = site.pages.inject(Hash.new) do |memo, page|
